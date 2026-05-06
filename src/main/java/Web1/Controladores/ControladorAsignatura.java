@@ -1,7 +1,12 @@
 package Web1.Controladores;
 
 
-import java.util.ArrayList;
+import Web1.Modelo.Asignatura;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import java.io.Serializable;
+
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -12,38 +17,12 @@ import java.util.ArrayList;
  *
  * @author Sala Sistemas
  */
-public class ControladorAsignatura {
-    private String List<codigo>;
-    private String List<nombre>;
-    private int List<creditos>;
-    private int List<intensidad>;
-
-    public ControladorAsignatura(String codigo, String nombre, int creditos, int intensidad) {
-        this.codigo = new ArrayList<>();
-        this.nombre = ArrayList<>();
-        this.creditos = ArrayList<>();
-        this.intensidad = ArrayList<>();
-    }
-
-    public String getList() {
-        return List;
-    }
-
-    public String getList() {
-        return List;
-    }
-
-    public int getList() {
-        return List;
-    }
-
-    public int getList() {
-        return List;
-    }
-
+@Named(value= "asignCtrl")
+@SessionScoped
+public class ControladorAsignatura implements Serializable{
+    private Asignatura asignatura= new Asignatura("750014C", "FPOE", (byte)3, (byte)3);
     
-    
-    
-    
-    
+    public Asignatura getAsignatura(){
+        return asignatura;
+    }
 }
