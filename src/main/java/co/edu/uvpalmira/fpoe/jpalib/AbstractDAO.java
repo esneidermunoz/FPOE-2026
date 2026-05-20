@@ -71,8 +71,7 @@ public abstract class AbstractDAO<T extends AbstractEntity> implements Serializa
         }
     }
 
-    public void destroy(Long id) throws NonexistentEntityException
-    {
+    public void destroy(Long id) throws NonexistentEntityException {
 //        EntityManager em = null;
 //        try {
 //            em = getEntityManager();
@@ -114,7 +113,7 @@ public abstract class AbstractDAO<T extends AbstractEntity> implements Serializa
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            
+
             Root<T> root = cq.from(entityClass); // +
 //            cq.select(cq.from(entityClass));
             cq.select(root);

@@ -1,24 +1,43 @@
-package Web1.Modelo;
+package web.modelo;
 
+import co.edu.uvpalmira.fpoe.jpalib.AbstractEntity;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author Sala Sistemas
  */
+
 @Entity
-public class Asignatura {
-@Id
+@NamedQueries({
+    @NamedQuery(name = "Asignatura.buscarPorCodigo", query = "SELECT a FROM Asignatura a WHERE a.codigo= :codigo"),
+    @NamedQuery(name = "Asignatura.buscarPorEscuela", query = "SELECT a FROM Asignatura a WHERE a.codigo LIKE :prefijo ORDER BY a.codigo ASC")
+})
+public class Asignatura extends AbstractEntity {
+
+    @Column(nullable = false, unique = true, length = 7)
     private String codigo;
+    @Column(nullable = false, length = 150, unique = false)
     private String nombre;
+    @Column(nullable = false)
     private byte creditos;
+    @Column(nullable = false)
     private byte intensidad;
+
+    public Asignatura() {
+        this.codigo = "no definido";
+        this.nombre = "no definido";
+        this.creditos = 0;
+        this.intensidad = 0;
+    }
 
     public Asignatura(String codigo, String nombre, byte creditos, byte intensidad) {
         this.codigo = codigo;
@@ -58,8 +77,5 @@ public class Asignatura {
     public void setIntensidad(byte intensidad) {
         this.intensidad = intensidad;
     }
-    
-    
-    
-}
 
+}

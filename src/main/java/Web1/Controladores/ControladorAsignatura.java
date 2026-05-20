@@ -1,7 +1,7 @@
 package Web1.Controladores;
 
 
-import Web1.Modelo.Asignatura;
+import web.modelo.Asignatura;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.io.Serializable;
