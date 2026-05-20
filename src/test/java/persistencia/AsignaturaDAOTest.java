@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.eclipse.persistence.config.EntityManagerProperties;
+import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -31,6 +32,17 @@ public class AsignaturaDAOTest {
             asignaturaDAO.create(asig);
             this.id = asig.getId();
             System.out.println(this.id);
+            Assert.assertNotNull(asig.getId());
+            
+            System.out.println("buscar");
+            asig=null;
+            asig= asignaturaDAO.buscarPorCodigo(("750014C"));
+            Assert.assertEquals("FPOE", asig.getNombre());
+            
+            
+        
+        
+        
         } catch (Exception ex) {
             Logger.getLogger(AsignaturaDAOTest.class.getName()).log(Level.SEVERE, null, ex);
             fail();
