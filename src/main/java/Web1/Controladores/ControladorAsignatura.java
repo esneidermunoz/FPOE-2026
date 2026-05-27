@@ -8,6 +8,9 @@ import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.io.Serializable;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import logica.ILogica;
 
 
@@ -28,12 +31,27 @@ public class ControladorAsignatura implements Serializable{
     @Inject 
     private ILogica logica;
     
-    public void guardar (){
-        this.logica.crearAsignatura(this.asignatura);
-        FacesContext.getCurrentInstance().addMessage(
-                null, new FacesMessage("la asignatura fue guardada"));
-    }
     public Asignatura getAsignatura(){
         return asignatura;
     }
-}
+    
+    public void guardar (){
+        try{
+        this.logica.crearAsignatura(this.asignatura);
+        FacesContext.getCurrentInstance().addMessage(
+                null, new FacesMessage("la asignatura fue guardada"));
+    }catch (SQLIntegrityConstraintViolationException ex){
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
+                FacesMessage.SEVERITY_ERROR, "error de restricciones", ex.getLocalizedMessage()));
+        Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
+    }catch (Exception ex){
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
+                FacesMessage.SEVERITY_ERROR, "error no identificado, contacte con los desarrolladores", ex.getLocalizedMessage()));
+        Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
+            }
+    
+    
+    
+    
+    
+}}

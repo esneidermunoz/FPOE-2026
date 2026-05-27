@@ -5,6 +5,7 @@
 package logica;
 
 import co.edu.uvpalmira.fpoe.jpalib.NonexistentEntityException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import web.modelo.Asignatura;
 
@@ -13,9 +14,9 @@ import web.modelo.Asignatura;
  * @author Sala Sistemas
  */
 public interface ILogica {
-    public void crearAsignatura(Asignatura asignatura);
-    public void modificarAsignatura(Asignatura asignatura);
-    public Asignatura buscarAsignatura(Asignatura asignatura);
+    public void crearAsignatura(Asignatura asignatura) throws SQLIntegrityConstraintViolationException, Exception;
+    public void modificarAsignatura(Asignatura asignatura) throws NonexistentEntityException, Exception;
+    public Asignatura buscarAsignatura(String codigo);
     public List<Asignatura> buscarAsignaturas();
     
 }

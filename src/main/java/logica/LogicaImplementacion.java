@@ -6,6 +6,7 @@ package logica;
 
 import co.edu.uvpalmira.fpoe.jpalib.NonexistentEntityException;
 import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceUnit;
 import java.sql.SQLIntegrityConstraintViolationException;
@@ -17,7 +18,7 @@ import web.modelo.Asignatura;
  *
  * @@author Sala Sistemas
  */
-@ApplicatonScoped
+@ApplicationScoped
 public class LogicaImplementacion implements ILogica {
    
     @PersistenceUnit(name="proyectPU")
@@ -43,8 +44,8 @@ public class LogicaImplementacion implements ILogica {
     }
 
     @Override
-    public Asignatura buscarAsignatura(Asignatura asignatura) {
-        
+    public Asignatura buscarAsignatura( String codigo) {
+        return this.asignaturaDAO.buscarPorCodigo(codigo);
     }
 
     @Override
