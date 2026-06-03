@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.validation.constraints.NotEmpty;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -23,12 +24,17 @@ import jakarta.persistence.NamedQuery;
 })
 public class Asignatura extends AbstractEntity {
 
+    @NotEmpty
     @Column(nullable = false, unique = true, length = 7)
     private String codigo;
+    
+    @NotEmpty
     @Column(nullable = false, length = 150, unique = false)
     private String nombre;
+    
     @Column(nullable = false)
     private byte creditos;
+    
     @Column(nullable = false)
     private byte intensidad;
 
