@@ -7,14 +7,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-    <head>
+      xmlns:p="http://primefaces.org/ui"
+      >
+    <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+    </h:head>
 
     <h:body>
-        <h:form>
+        <h:form id= "formulario" >
             <p:card style="width: 35rem; margin-bottom: 2em">
                 <f:facet name="title">Gestionar Asignaturas</f:facet>
 
@@ -38,14 +39,32 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 
                 </h:panelGrid>
 
+                <p:messages id="mensajes" globalOnly="true" closable="true"/>
+
                 <f:facet name="footer">
-                    <p:commandButton icon="pi pi-check" value="Save"/>
-                    <p:commandButton icon="pi pi-times" value="Cancel"
+                    <p:commandButton icon="pi pi-check" value="Guardar"
+                                     action="#{asignCtrl.guardar()}"
+                                     process="@this txtCodigo txtNombre txtCreditos txtIntensidad"
+                                     update ="mensajes txtCodigo txtNombre txtCreditos txtIntensidad tabla"/>
+                    <p:commandButton icon="pi pi-times" value="Cancelar"
                                      styleClass="ui-button-secondary"
-                                     style="margin-left: .5em"/>
+                                     style="margin-left: .5em"
+                                     action="#{asignCtrl.cancelar()}"
+                                     process="@this"
+                                     update="mensajes txtCodigo txtNombre txtCreditos txtIntensidad"/>
+
                 </f:facet>
+
+
             </p:card>
         </h:form>
+        
+        <p:dataTable id="tabla" value="#{asignCtrl.asignaturas}" var="obj">
+            <p:column headerText="Codigo">#{obj.codigo}</p:column>
+            <p:column headerText="Nombre">#{obj.nombre}</p:column>
+            <p:column headerText="Intensidad">#{obj.intensidad}</p:column>
+            <p:column headerText="Creditos">#{obj.creditos}</p:column>
+        </p:dataTable>
     </h:body>
 </html>
 

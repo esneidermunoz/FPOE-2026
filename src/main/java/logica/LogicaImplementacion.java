@@ -21,7 +21,7 @@ import web.modelo.Asignatura;
 @ApplicationScoped
 public class LogicaImplementacion implements ILogica {
    
-    @PersistenceUnit(name="proyectPU")
+    @PersistenceUnit(name="projectPU")
     private EntityManagerFactory emf;
     private AsignaturaDAO asignaturaDAO;
     public LogicaImplementacion(){

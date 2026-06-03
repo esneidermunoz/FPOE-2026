@@ -33,8 +33,8 @@ public class Asignatura extends AbstractEntity {
     private byte intensidad;
 
     public Asignatura() {
-        this.codigo = "no definido";
-        this.nombre = "no definido";
+        this.codigo = "";
+        this.nombre = "";
         this.creditos = 0;
         this.intensidad = 0;
     }
