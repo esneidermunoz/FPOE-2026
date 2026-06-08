@@ -16,9 +16,9 @@ import modelo.Docente;
  *
  * @author Asus i5
  */
-public class ILogica {
+public interface ILogica {
     public void registrarDocente(Docente docente)throws SQLIntegrityConstraintViolationException, Exception;
     public void modificarDocente(Docente docente) throws NonexistentEntityException, Exception;
-    public void buscarDocente(String codigo);
+    public Docente buscarDocente(String codigo);
     public List<Docente> buscarDocentes();
 }
