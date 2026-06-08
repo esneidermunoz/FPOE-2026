@@ -22,7 +22,7 @@ import jakarta.validation.constraints.NotEmpty;
 })
 public class Docente extends AbstractEntity {
     @NotEmpty
-    @Column (nullable= false)
+    @Column (nullable= false, unique = true)
     private long nit;
     @Column(nullable = false, unique = true, length = 7)
     private String codigo;
@@ -41,7 +41,7 @@ public class Docente extends AbstractEntity {
         this.especializacion = "";
     }
 
-    public Docente(long nit,String codigo, String nombres, String apellidos, String especializacion) {
+    public Docente(String codigo,long nit, String nombres, String apellidos, String especializacion) {
         this.nit = nit;
         this.codigo= codigo;
         this.nombres = nombres;

@@ -25,7 +25,7 @@ import modelo.Docente;
 @SessionScoped
 public class DocenteControl implements Serializable {
 
-    private Docente docente = new Docente(12345678, "doc12345", "Juan", "perez", "maestro en literatura");
+    private Docente docente = new Docente("doc12345",12345678, "Juan", "perez", "maestro en literatura");
     @Inject
     private ILogica logica;
 
@@ -47,7 +47,7 @@ public class DocenteControl implements Serializable {
                     null, new FacesMessage(
                             FacesMessage.SEVERITY_ERROR, "error de restricciones", ex.getLocalizedMessage()));
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
-        }catch (Exception ex) { // <-- NUEVO CATCH PARA EL ERROR DE LA LÍNEA 42
+        }catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(
                     null, new FacesMessage(
                             FacesMessage.SEVERITY_ERROR, "Error desconocido, contacte con el desarrollador", ex.getLocalizedMessage()));
