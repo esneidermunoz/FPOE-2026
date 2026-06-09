@@ -17,8 +17,7 @@ import jakarta.validation.constraints.NotEmpty;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Docente.buscarPorCodigo", query = "SELECT d FROM Docente a WHERE d.codigo= :codigo"),
-    @NamedQuery(name = "Docente.buscarPorEscuela", query = "SELECT a FROM Docente a WHERE d.codigo LIKE :prefijo ORDER BY d.codigo ASC")
+    @NamedQuery(name = "Docente.buscarPorCodigo", query = "SELECT d FROM Docente d WHERE d.codigo= :codigo"),
 })
 public class Docente extends AbstractEntity {
     @NotEmpty

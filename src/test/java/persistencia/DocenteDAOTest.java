@@ -21,7 +21,7 @@ public class DocenteDAOTest {
     private Long id;
 
     public DocenteDAOTest() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("testPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Web1PU");
         this.DocenteDAO = new DocenteDAO(emf);
     }
 
@@ -38,7 +38,7 @@ public class DocenteDAOTest {
             System.out.println("buscar");
             doc = null;
             doc = DocenteDAO.buscarPorCodigo(("750014C"));
-            Assert.assertEquals("FPOE", doc.getNombres());
+            Assert.assertEquals("pepe juam", doc.getNombres());
 
         } catch (Exception ex) {
             Logger.getLogger(DocenteDAOTest.class.getName()).log(Level.SEVERE, null, ex);
