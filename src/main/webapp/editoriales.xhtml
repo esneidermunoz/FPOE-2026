@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{label['xhtml.editoriales.label']}</title>
+    </h:head>
+    <h:body>
+
+        <f:loadBundle var="label" basename="labels" />
+
+        <h:form>
+            <p:card title="#{label['xhtml.editoriales.label']}"> 
+
+                <h:panelGrid columns="3" >
+                    <p:outputLabel value="#{label['editorial.nit.label']}" for="nit" /> 
+                    <h:panelGrid columns="2">
+                        <p:inputNumber id="nit" decimalPlaces="0" emptyValue="" />
+                        <p:commandButton icon="pi pi-search"  />
+                    </h:panelGrid>
+                    <p:message for="nit" />
+
+                    <p:outputLabel value="#{label['editorial.nombre.label']}" for="@next" /> 
+                    <p:inputText id="nombre"  />
+                    <p:message for="@previous" />
+
+                </h:panelGrid>
+
+                <f:facet name="footer"> 
+                    <p:commandButton value="#{label['accion.guardar.label']}" 
+                                     icon="pi pi-save" />
+                    <p:spacer width="2" />
+                    <p:commandButton value="#{label['accion.borrar.label']}" 
+                                     icon="pi pi-times" />
+                </f:facet>
+
+                <p:messages id="mensajes" globalOnly="true" />
+            </p:card>
+        </h:form>
+
+
+        <p:dataTable >
+            <p:column headerText="#{label['editorial.nit.label']}">
+            </p:column>
+            <p:column headerText="#{label['editorial.nombre.label']}">
+            </p:column>
+        </p:dataTable>
+
+    </h:body>
+</html>
