@@ -22,7 +22,7 @@ public class EditorialDAO extends AbstractDAO<Editorial> {
 
     public Editorial buscarPorNit(long nit) {
         EntityManager em = super.getEntityManager();
-        return (Editorial) em.createNamedQuery("Editorial.buscarPorNit").setParameter("nit", nit).getResultList();
+        return (Editorial) em.createNamedQuery("Editorial.buscarPorNit").setParameter("nit", nit).getSingleResult();
 
     }
 

@@ -1317,57 +1317,6 @@ estudiante.apellidos.label = Apellidos
 </web-app>
 </file>
 
-<file path="src/test/resources/META-INF/persistence.xml">
-<?xml version="1.0" encoding="UTF-8"?>
-<persistence version="3.0" 
-             xmlns="https://jakarta.ee/xml/ns/persistence" 
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
-  
-    <!-- 
-    Unidad persistente para la ejecusión de las pruebas unitarias usando MySQL
-    --> 
-    
-    <persistence-unit name="FPOE-Test-PU" transaction-type="RESOURCE_LOCAL">
-        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-
-        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Editorial</class>
-
-        <properties>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/fpoedb?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
-            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="jakarta.persistence.jdbc.user" value="root"/>
-            <property name="jakarta.persistence.jdbc.password" value="roottoor"/>
-            
-            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>            
-            <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
-        </properties>    
-    </persistence-unit>
-  
-    <!-- 
-    Unidad persistente para la ejecusión de las pruebas unitarias usando PostgreSQL
-    --> 
-
-    <persistence-unit name="FPOE-Test-PU-PostgreSQL" transaction-type="RESOURCE_LOCAL">
-        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-
-        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Editorial</class>
-        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Libro</class>
-
-        <properties>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/fpoedb"/>
-            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="jakarta.persistence.jdbc.user" value="postgres"/>
-            <property name="jakarta.persistence.jdbc.password" value="postgres"/>
-            
-            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
-            <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
-        </properties>    
-    </persistence-unit>
-
-</persistence>
-</file>
-
 <file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/backend/dao/EditorialDAO.java">
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -1520,70 +1469,6 @@ public class Editorial extends AbstractEntity {
 }
 </file>
 
-<file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/frontend/controller/EditorialController.java">
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package co.edu.uvpalmira.fpoe.exfinal.frontend.controller;
-
-import co.edu.uvpalmira.fpoe.exfinal.entities.Editorial;
-import jakarta.enterprise.context.SessionScoped;
-import jakarta.faces.application.FacesMessage;
-import jakarta.faces.context.FacesContext;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
-import java.io.Serializable;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import co.edu.uvpalmira.fpoe.exfinal.backend.logic.BusinessLogicInterface;
-import jakarta.persistence.NoResultException;
-import java.sql.SQLIntegrityConstraintViolationException;
-
-/**
- *
- * @author ajvelez
- */
-@Named(value = "edctrl")
-@SessionScoped
-public class EditorialController implements Serializable {
-
-    private Editorial editorial = new Editorial(12345678, "editorial");
-    @Inject
-    private BusinessLogicInterface logic;
-
-    public Editorial buscarEditorial() {
-        try {
-            return editorial;
-        } catch (NoResultException ex) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("no se encontro la editorial"));
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("error desconocido, contacte con el desarrollador"));
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-
-    public List<Editorial> getEditoriales() {
-        return this.logic.getEditoriales();
-    }
-
-    public void guardar() {
-        try {
-            this.logic.guardar(editorial);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("la editorial fue registrada"));
-        } catch (SQLIntegrityConstraintViolationException ex) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("error de restricciones"));
-        } catch (Exception ex) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("error desconocido, contacte con el desarrollador"));
-        }
-
-    }
-}
-</file>
-
 <file path="src/main/resources/data.sql">
 INSERT INTO editorial (nit, nombre) VALUES (8903990106, 'Editorial Universidad del Valle');
 INSERT INTO editorial (nit, nombre) VALUES (8300022877, 'Panamericana Editorial');
@@ -1636,6 +1521,116 @@ public class EditorialDAOTest {
         assertEquals("Editorial Universidad del Valle", editorial.getNombre());
     }
 
+}
+</file>
+
+<file path="src/test/resources/META-INF/persistence.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+  <!-- 
+    Unidad persistente para la ejecusión de las pruebas unitarias usando MySQL
+    -->
+  <persistence-unit name="FPOE-Test-PU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>co.edu.uvpalmira.fpoe.exfinal.entities.Editorial</class>
+    <properties>
+      <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/fpoedb?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+      <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="jakarta.persistence.jdbc.user" value="root"/>
+      <property name="jakarta.persistence.jdbc.password" value="roottoor"/>
+      <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+      <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
+    </properties>
+  </persistence-unit>
+  <!-- 
+    Unidad persistente para la ejecusión de las pruebas unitarias usando PostgreSQL
+    -->
+  <persistence-unit name="FPOE-Test-PU-PostgreSQL" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>co.edu.uvpalmira.fpoe.exfinal.entities.Editorial</class>
+    <class>co.edu.uvpalmira.fpoe.exfinal.entities.Libro</class>
+    <properties>
+      <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/fpoedb"/>
+      <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="jakarta.persistence.jdbc.user" value="postgres"/>
+      <property name="jakarta.persistence.jdbc.password" value="postgres"/>
+      <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+      <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
+    </properties>
+  </persistence-unit>
+</persistence>
+</file>
+
+<file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/frontend/controller/EditorialController.java">
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package co.edu.uvpalmira.fpoe.exfinal.frontend.controller;
+
+import co.edu.uvpalmira.fpoe.exfinal.entities.Editorial;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import java.io.Serializable;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import co.edu.uvpalmira.fpoe.exfinal.backend.logic.BusinessLogicInterface;
+import jakarta.persistence.NoResultException;
+import java.sql.SQLIntegrityConstraintViolationException;
+
+/**
+ *
+ * @author ajvelez
+ */
+@Named(value = "edctrl")
+@SessionScoped
+public class EditorialController implements Serializable {
+
+    private Editorial editorial = new Editorial(12345678, "editorial");
+    @Inject
+    private BusinessLogicInterface logic;
+
+    public Editorial getEditorial() {
+        try {
+            return editorial;
+        } catch (NoResultException ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("no se encontro la editorial"));
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("error desconocido, contacte con el desarrollador"));
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public void setEditorial(Editorial editorial) {
+        this.editorial = editorial;
+    }
+
+    public List<Editorial> getEditoriales() {
+        return this.logic.getEditoriales();
+    }
+
+    public void guardar() {
+        try {
+            this.logic.guardar(editorial);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("la editorial fue registrada"));
+        } catch (SQLIntegrityConstraintViolationException ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("error de restricciones"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("error desconocido, contacte con el desarrollador"));
+        }
+
+    }
+
+    public void cancelar() {
+        this.editorial = new Editorial();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("proceso cancelado"));
+    }
 }
 </file>
 

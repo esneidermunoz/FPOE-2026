@@ -17,7 +17,7 @@ import jakarta.validation.constraints.NotEmpty;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "e.buscarPorNit", query = "SELECT e FROM Editorial e WHERE e.nit= :nit"),
+    @NamedQuery(name = "Editorial.buscarPorNit", query = "SELECT e FROM Editorial e WHERE e.nit= :nit"),
     //@NamedQuery(name="e.buscarCompleto",query= "SELECT e FROM Editorial e WHERE e.nit LIKE :prefijo ORDER BY e.nit ASC")
 })
 public class Editorial extends AbstractEntity {
