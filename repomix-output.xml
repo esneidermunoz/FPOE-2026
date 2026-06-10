@@ -1,0 +1,1642 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+bin/main/co/edu/uvpalmira/fpoe/exfinal/backend/dao/EditorialDAO.class
+bin/main/co/edu/uvpalmira/fpoe/exfinal/backend/logic/BusinessLogicInterface.class
+bin/main/co/edu/uvpalmira/fpoe/exfinal/backend/logic/BussinessLogicImp.class
+bin/main/co/edu/uvpalmira/fpoe/exfinal/entities/Editorial.class
+bin/main/co/edu/uvpalmira/fpoe/exfinal/entities/Estudiante.class
+bin/main/co/edu/uvpalmira/fpoe/exfinal/entities/Persona.class
+bin/main/co/edu/uvpalmira/fpoe/exfinal/frontend/controller/EditorialController.class
+bin/main/co/edu/uvpalmira/fpoe/exfinal/util/SelectOneMenuConverter.class
+bin/main/co/edu/uvpalmira/fpoe/persistence/jpalib/AbstractDAO.class
+bin/main/co/edu/uvpalmira/fpoe/persistence/jpalib/AbstractEntity.class
+bin/main/co/edu/uvpalmira/fpoe/persistence/jpalib/IllegalOrphanException.class
+bin/main/co/edu/uvpalmira/fpoe/persistence/jpalib/NonexistentEntityException.class
+bin/main/co/edu/uvpalmira/fpoe/persistence/jpalib/PreexistingEntityException.class
+bin/main/data.sql
+bin/main/labels.properties
+bin/main/META-INF/persistence.xml
+bin/test/co/edu/uvpalmira/fpoe/exfinal/backend/dao/EditorialDAOTest.class
+bin/test/META-INF/persistence.xml
+build.gradle
+glassfish-resources.xml
+gradlew
+gradlew.bat
+nbproject/project.properties
+settings.gradle
+src/main/java/co/edu/uvpalmira/fpoe/exfinal/backend/dao/EditorialDAO.java
+src/main/java/co/edu/uvpalmira/fpoe/exfinal/backend/logic/BusinessLogicInterface.java
+src/main/java/co/edu/uvpalmira/fpoe/exfinal/backend/logic/BussinessLogicImp.java
+src/main/java/co/edu/uvpalmira/fpoe/exfinal/entities/Editorial.java
+src/main/java/co/edu/uvpalmira/fpoe/exfinal/frontend/controller/EditorialController.java
+src/main/java/co/edu/uvpalmira/fpoe/exfinal/util/SelectOneMenuConverter.java
+src/main/java/co/edu/uvpalmira/fpoe/persistence/jpalib/AbstractDAO.java
+src/main/java/co/edu/uvpalmira/fpoe/persistence/jpalib/AbstractEntity.java
+src/main/java/co/edu/uvpalmira/fpoe/persistence/jpalib/IllegalOrphanException.java
+src/main/java/co/edu/uvpalmira/fpoe/persistence/jpalib/NonexistentEntityException.java
+src/main/java/co/edu/uvpalmira/fpoe/persistence/jpalib/PreexistingEntityException.java
+src/main/resources/data.sql
+src/main/resources/labels.properties
+src/main/resources/META-INF/persistence.xml
+src/main/webapp/editoriales.xhtml
+src/main/webapp/WEB-INF/beans.xml
+src/main/webapp/WEB-INF/glassfish-web.xml
+src/main/webapp/WEB-INF/web.xml
+src/test/java/co/edu/uvpalmira/fpoe/exfinal/backend/dao/EditorialDAOTest.java
+src/test/resources/META-INF/persistence.xml
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="bin/main/data.sql">
+/* 
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Other/SQLTemplate.sql to edit this template
+ */
+/**
+ * Author:  ajvelez
+ * Created: 6/06/2024
+ */
+
+INSERT INTO editorial (nit, nombre) VALUES (8903990106, 'Editorial Universidad del Valle');
+INSERT INTO editorial (nit, nombre) VALUES (8300022877, 'Panamericana Editorial');
+INSERT INTO editorial (nit, nombre) VALUES (8605334677, 'Villegas Editores');
+
+INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Daniela Violi', 'DISPONIBLE', 9788417400989, 'Sé un algoritmo irrepetible', 2);
+INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Francisco Leal Quevedo, Amalia Leal Córdoba', 'DISPONIBLE', 9789583068317, '¿A dónde viajan los gatos?', 2);
+
+INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Consuelo Lago', 'DISPONIBLE', 9786287542198, 'NIEVES 55 AÑOS', 3);
+INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Murray Cooper', 'DISPONIBLE', 9789588818368, 'COLIBRÍES EN COLOMBIA', 3);
+</file>
+
+<file path="bin/main/labels.properties">
+# Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+# Click nbfs://nbhost/SystemFileSystem/Templates/Other/properties.properties to edit this template
+
+accion.guardar.label = Guardar
+accion.borrar.label = Limpiar Formulario
+accion.prestamo.registrar.label = Realizar Pr\u00e9stamo
+
+
+xhtml.editoriales.label = Gestionar Editoriales
+xhtml.libros.label = Gestionar Libros
+xhtml.prestamos.label = Registrar Prestamos
+xhtml.prestamos.activos.label = Pr\u00e9stamos Activos del Estudiante
+
+
+selectone.label = Seleccione ...
+
+editorial.nit.label = NIT
+editorial.nombre.label = Nombre
+editorial.email.label = Correo Electr\u00f3nico
+
+libro.label = Libro
+libro.isbn.label = ISBN
+libro.titulo.label = T\u00edtulo
+libro.autor.label = Autor
+libro.editorial.label = Editorial
+
+estudiante.label = Estudiante
+estudiante.codigo.label = C\u00f3digo
+estudiante.nombres.label = Nombres
+estudiante.apellidos.label = Apellidos
+</file>
+
+<file path="bin/main/META-INF/persistence.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" 
+             xmlns="https://jakarta.ee/xml/ns/persistence" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+    <!-- 
+    Unidad persistente para la conexión a través del servidor web usando en MySQL
+    -->
+    <persistence-unit name="FPOE-PU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/fpoe</jta-data-source>
+        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Editorial</class>
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
+        </properties>
+    </persistence-unit>
+
+ 
+   
+    <!-- 
+    Unidad persistente para la conexión a través del servidor web usando PostgreSQL
+    -->
+<!--    <persistence-unit name="FPOE-PU-PostgreSQL" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/fpoepostgresql</jta-data-source>
+        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Editorial</class>
+        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Libro</class>
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
+        </properties>
+    </persistence-unit>-->
+</persistence>
+</file>
+
+<file path="bin/test/META-INF/persistence.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" 
+             xmlns="https://jakarta.ee/xml/ns/persistence" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+  
+    <!-- 
+    Unidad persistente para la ejecusión de las pruebas unitarias usando MySQL
+    --> 
+    
+    <persistence-unit name="FPOE-Test-PU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Editorial</class>
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/fpoedb?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value="roottoor"/>
+            
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>            
+            <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
+        </properties>    
+    </persistence-unit>
+  
+    <!-- 
+    Unidad persistente para la ejecusión de las pruebas unitarias usando PostgreSQL
+    --> 
+
+    <persistence-unit name="FPOE-Test-PU-PostgreSQL" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Editorial</class>
+        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Libro</class>
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/fpoedb"/>
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.user" value="postgres"/>
+            <property name="jakarta.persistence.jdbc.password" value="postgres"/>
+            
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
+        </properties>    
+    </persistence-unit>
+
+</persistence>
+</file>
+
+<file path="build.gradle">
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'war'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //
+    testImplementation     'junit:junit:4.13'
+
+    // Use JUnit Jupiter for testing.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+
+    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
+    implementation 'com.google.guava:guava:31.1-jre'
+
+    // https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api
+    implementation 'jakarta.persistence:jakarta.persistence-api:3.2.0-M2'
+
+    // https://mvnrepository.com/artifact/org.eclipse.persistence/org.eclipse.persistence.jpa
+    implementation 'org.eclipse.persistence:org.eclipse.persistence.jpa:4.0.2'
+
+    // https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
+    implementation 'com.mysql:mysql-connector-j:8.4.0'
+
+
+    // https://mvnrepository.com/artifact/jakarta.platform/jakarta.jakartaee-api
+    providedCompile 'jakarta.platform:jakarta.jakartaee-web-api:11.0.0'
+    // compileOnly 'jakarta.platform:jakarta.jakartaee-api:9.1.0'
+
+    // https://mvnrepository.com/artifact/org.primefaces/primefaces
+    implementation 'org.primefaces:primefaces:12.0.0:jakarta'
+
+}
+</file>
+
+<file path="glassfish-resources.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN" "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
+<resources>
+    <!--Conexión a la base de datos usando MySQL-->
+    
+    <jdbc-resource  jndi-name="jdbc/fpoe" 
+                    enabled="true" 
+                    object-type="user" 
+                    pool-name="fpoeConnectionPool">
+        <description/>
+    </jdbc-resource>
+    <jdbc-connection-pool name="fpoeConnectionPool" 
+                          allow-non-component-callers="false" 
+                          associate-with-thread="false" 
+                          connection-creation-retry-attempts="0" 
+                          connection-creation-retry-interval-in-seconds="10" 
+                          connection-leak-reclaim="false" 
+                          connection-leak-timeout-in-seconds="0" 
+                          connection-validation-method="auto-commit" 
+                          datasource-classname="com.mysql.cj.jdbc.MysqlConnectionPoolDataSource" 
+                          fail-all-connections="false" 
+                          idle-timeout-in-seconds="300" 
+                          is-connection-validation-required="false" 
+                          is-isolation-level-guaranteed="true" 
+                          lazy-connection-association="false" 
+                          lazy-connection-enlistment="false" 
+                          match-connections="false" 
+                          max-connection-usage-count="0" 
+                          max-pool-size="32" 
+                          max-wait-time-in-millis="60000" 
+                          non-transactional-connections="false" 
+                          ping="false" 
+                          pool-resize-quantity="2" 
+                          pooling="true" 
+                          res-type="javax.sql.ConnectionPoolDataSource" 
+                          statement-cache-size="0" 
+                          statement-leak-reclaim="false" 
+                          statement-leak-timeout-in-seconds="0" 
+                          statement-timeout-in-seconds="-1" 
+                          steady-pool-size="8" 
+                          validate-atmost-once-period-in-seconds="0" 
+                          wrap-jdbc-objects="false">
+        <property name="URL" value="jdbc:mysql://localhost:3306/fpoedb?useSSL=false"/>
+        <property name="User" value="root"/>
+        <property name="Password" value="roottoor"/>
+        <property name="allowPublicKeyRetrieval" value="true"/>
+        <property name="useSSL" value="false"/>
+    </jdbc-connection-pool>
+
+
+    <!--
+    Conexión a la base de datos usando PostgreSQL
+    -->
+    
+    <jdbc-resource enabled="true" 
+                   jndi-name="jdbc/fpoepostgresql" 
+                   object-type="user" 
+                   pool-name="fpoeConnectionPool-PostgreSQL">
+        <description/>
+    </jdbc-resource>
+    <jdbc-connection-pool name="fpoeConnectionPool-PostgreSQL" 
+                          allow-non-component-callers="false" 
+                          associate-with-thread="false" 
+                          connection-creation-retry-attempts="0" 
+                          connection-creation-retry-interval-in-seconds="10" 
+                          connection-leak-reclaim="false" 
+                          connection-leak-timeout-in-seconds="0" 
+                          connection-validation-method="auto-commit" 
+                          datasource-classname="org.postgresql.ds.PGConnectionPoolDataSource" 
+                          fail-all-connections="false" 
+                          idle-timeout-in-seconds="300" 
+                          is-connection-validation-required="false" 
+                          is-isolation-level-guaranteed="true" 
+                          lazy-connection-association="false" 
+                          lazy-connection-enlistment="false" 
+                          match-connections="false" 
+                          max-connection-usage-count="0" 
+                          max-pool-size="32" 
+                          max-wait-time-in-millis="60000" 
+                          non-transactional-connections="false" 
+                          ping="false" 
+                          pool-resize-quantity="2" 
+                          pooling="true" 
+                          res-type="javax.sql.ConnectionPoolDataSource" 
+                          statement-cache-size="0" 
+                          statement-leak-reclaim="false" 
+                          statement-leak-timeout-in-seconds="0" 
+                          statement-timeout-in-seconds="-1" 
+                          steady-pool-size="8" 
+                          validate-atmost-once-period-in-seconds="0" 
+                          wrap-jdbc-objects="false">        
+        <property name="URL" value="jdbc:postgresql://localhost:5432/fpoedb"/>
+        <property name="User" value="postgres"/>
+        <property name="Password" value="postgres"/>
+    </jdbc-connection-pool></resources>
+</file>
+
+<file path="gradlew">
+#!/bin/sh
+
+#
+# Copyright © 2015-2021 the original authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+##############################################################################
+#
+#   Gradle start up script for POSIX generated by Gradle.
+#
+#   Important for running:
+#
+#   (1) You need a POSIX-compliant shell to run this script. If your /bin/sh is
+#       noncompliant, but you have some other compliant shell such as ksh or
+#       bash, then to run this script, type that shell name before the whole
+#       command line, like:
+#
+#           ksh Gradle
+#
+#       Busybox and similar reduced shells will NOT work, because this script
+#       requires all of these POSIX shell features:
+#         * functions;
+#         * expansions «$var», «${var}», «${var:-default}», «${var+SET}»,
+#           «${var#prefix}», «${var%suffix}», and «$( cmd )»;
+#         * compound commands having a testable exit status, especially «case»;
+#         * various built-in commands including «command», «set», and «ulimit».
+#
+#   Important for patching:
+#
+#   (2) This script targets any POSIX shell, so it avoids extensions provided
+#       by Bash, Ksh, etc; in particular arrays are avoided.
+#
+#       The "traditional" practice of packing multiple parameters into a
+#       space-separated string is a well documented source of bugs and security
+#       problems, so this is (mostly) avoided, by progressively accumulating
+#       options in "$@", and eventually passing that to Java.
+#
+#       Where the inherited environment variables (DEFAULT_JVM_OPTS, JAVA_OPTS,
+#       and GRADLE_OPTS) rely on word-splitting, this is performed explicitly;
+#       see the in-line comments for details.
+#
+#       There are tweaks for specific operating systems such as AIX, CygWin,
+#       Darwin, MinGW, and NonStop.
+#
+#   (3) This script is generated from the Groovy template
+#       https://github.com/gradle/gradle/blob/HEAD/subprojects/plugins/src/main/resources/org/gradle/api/internal/plugins/unixStartScript.txt
+#       within the Gradle project.
+#
+#       You can find Gradle at https://github.com/gradle/gradle/.
+#
+##############################################################################
+
+# Attempt to set APP_HOME
+
+# Resolve links: $0 may be a link
+app_path=$0
+
+# Need this for daisy-chained symlinks.
+while
+    APP_HOME=${app_path%"${app_path##*/}"}  # leaves a trailing /; empty if no leading path
+    [ -h "$app_path" ]
+do
+    ls=$( ls -ld "$app_path" )
+    link=${ls#*' -> '}
+    case $link in             #(
+      /*)   app_path=$link ;; #(
+      *)    app_path=$APP_HOME$link ;;
+    esac
+done
+
+# This is normally unused
+# shellcheck disable=SC2034
+APP_BASE_NAME=${0##*/}
+APP_HOME=$( cd "${APP_HOME:-./}" && pwd -P ) || exit
+
+# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
+
+# Use the maximum available, or set MAX_FD != -1 to use that value.
+MAX_FD=maximum
+
+warn () {
+    echo "$*"
+} >&2
+
+die () {
+    echo
+    echo "$*"
+    echo
+    exit 1
+} >&2
+
+# OS specific support (must be 'true' or 'false').
+cygwin=false
+msys=false
+darwin=false
+nonstop=false
+case "$( uname )" in                #(
+  CYGWIN* )         cygwin=true  ;; #(
+  Darwin* )         darwin=true  ;; #(
+  MSYS* | MINGW* )  msys=true    ;; #(
+  NONSTOP* )        nonstop=true ;;
+esac
+
+CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
+
+
+# Determine the Java command to use to start the JVM.
+if [ -n "$JAVA_HOME" ] ; then
+    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
+        # IBM's JDK on AIX uses strange locations for the executables
+        JAVACMD=$JAVA_HOME/jre/sh/java
+    else
+        JAVACMD=$JAVA_HOME/bin/java
+    fi
+    if [ ! -x "$JAVACMD" ] ; then
+        die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation."
+    fi
+else
+    JAVACMD=java
+    which java >/dev/null 2>&1 || die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation."
+fi
+
+# Increase the maximum file descriptors if we can.
+if ! "$cygwin" && ! "$darwin" && ! "$nonstop" ; then
+    case $MAX_FD in #(
+      max*)
+        # In POSIX sh, ulimit -H is undefined. That's why the result is checked to see if it worked.
+        # shellcheck disable=SC3045
+        MAX_FD=$( ulimit -H -n ) ||
+            warn "Could not query maximum file descriptor limit"
+    esac
+    case $MAX_FD in  #(
+      '' | soft) :;; #(
+      *)
+        # In POSIX sh, ulimit -n is undefined. That's why the result is checked to see if it worked.
+        # shellcheck disable=SC3045
+        ulimit -n "$MAX_FD" ||
+            warn "Could not set maximum file descriptor limit to $MAX_FD"
+    esac
+fi
+
+# Collect all arguments for the java command, stacking in reverse order:
+#   * args from the command line
+#   * the main class name
+#   * -classpath
+#   * -D...appname settings
+#   * --module-path (only if needed)
+#   * DEFAULT_JVM_OPTS, JAVA_OPTS, and GRADLE_OPTS environment variables.
+
+# For Cygwin or MSYS, switch paths to Windows format before running java
+if "$cygwin" || "$msys" ; then
+    APP_HOME=$( cygpath --path --mixed "$APP_HOME" )
+    CLASSPATH=$( cygpath --path --mixed "$CLASSPATH" )
+
+    JAVACMD=$( cygpath --unix "$JAVACMD" )
+
+    # Now convert the arguments - kludge to limit ourselves to /bin/sh
+    for arg do
+        if
+            case $arg in                                #(
+              -*)   false ;;                            # don't mess with options #(
+              /?*)  t=${arg#/} t=/${t%%/*}              # looks like a POSIX filepath
+                    [ -e "$t" ] ;;                      #(
+              *)    false ;;
+            esac
+        then
+            arg=$( cygpath --path --ignore --mixed "$arg" )
+        fi
+        # Roll the args list around exactly as many times as the number of
+        # args, so each arg winds up back in the position where it started, but
+        # possibly modified.
+        #
+        # NB: a `for` loop captures its iteration list before it begins, so
+        # changing the positional parameters here affects neither the number of
+        # iterations, nor the values presented in `arg`.
+        shift                   # remove old arg
+        set -- "$@" "$arg"      # push replacement arg
+    done
+fi
+
+# Collect all arguments for the java command;
+#   * $DEFAULT_JVM_OPTS, $JAVA_OPTS, and $GRADLE_OPTS can contain fragments of
+#     shell script including quotes and variable substitutions, so put them in
+#     double quotes to make sure that they get re-expanded; and
+#   * put everything else in single quotes, so that it's not re-expanded.
+
+set -- \
+        "-Dorg.gradle.appname=$APP_BASE_NAME" \
+        -classpath "$CLASSPATH" \
+        org.gradle.wrapper.GradleWrapperMain \
+        "$@"
+
+# Stop when "xargs" is not available.
+if ! command -v xargs >/dev/null 2>&1
+then
+    die "xargs is not available"
+fi
+
+# Use "xargs" to parse quoted args.
+#
+# With -n1 it outputs one arg per line, with the quotes and backslashes removed.
+#
+# In Bash we could simply go:
+#
+#   readarray ARGS < <( xargs -n1 <<<"$var" ) &&
+#   set -- "${ARGS[@]}" "$@"
+#
+# but POSIX shell has neither arrays nor command substitution, so instead we
+# post-process each arg (as a line of input to sed) to backslash-escape any
+# character that might be a shell metacharacter, then use eval to reverse
+# that process (while maintaining the separation between arguments), and wrap
+# the whole thing up as a single "set" statement.
+#
+# This will of course break if any of these variables contains a newline or
+# an unmatched quote.
+#
+
+eval "set -- $(
+        printf '%s\n' "$DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS" |
+        xargs -n1 |
+        sed ' s~[^-[:alnum:]+,./:=@_]~\\&~g; ' |
+        tr '\n' ' '
+    )" '"$@"'
+
+exec "$JAVACMD" "$@"
+</file>
+
+<file path="gradlew.bat">
+@rem
+@rem Copyright 2015 the original author or authors.
+@rem
+@rem Licensed under the Apache License, Version 2.0 (the "License");
+@rem you may not use this file except in compliance with the License.
+@rem You may obtain a copy of the License at
+@rem
+@rem      https://www.apache.org/licenses/LICENSE-2.0
+@rem
+@rem Unless required by applicable law or agreed to in writing, software
+@rem distributed under the License is distributed on an "AS IS" BASIS,
+@rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+@rem See the License for the specific language governing permissions and
+@rem limitations under the License.
+@rem
+
+@if "%DEBUG%"=="" @echo off
+@rem ##########################################################################
+@rem
+@rem  Gradle startup script for Windows
+@rem
+@rem ##########################################################################
+
+@rem Set local scope for the variables with windows NT shell
+if "%OS%"=="Windows_NT" setlocal
+
+set DIRNAME=%~dp0
+if "%DIRNAME%"=="" set DIRNAME=.
+@rem This is normally unused
+set APP_BASE_NAME=%~n0
+set APP_HOME=%DIRNAME%
+
+@rem Resolve any "." and ".." in APP_HOME to make it shorter.
+for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
+
+@rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
+
+@rem Find java.exe
+if defined JAVA_HOME goto findJavaFromJavaHome
+
+set JAVA_EXE=java.exe
+%JAVA_EXE% -version >NUL 2>&1
+if %ERRORLEVEL% equ 0 goto execute
+
+echo.
+echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+echo.
+echo Please set the JAVA_HOME variable in your environment to match the
+echo location of your Java installation.
+
+goto fail
+
+:findJavaFromJavaHome
+set JAVA_HOME=%JAVA_HOME:"=%
+set JAVA_EXE=%JAVA_HOME%/bin/java.exe
+
+if exist "%JAVA_EXE%" goto execute
+
+echo.
+echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME%
+echo.
+echo Please set the JAVA_HOME variable in your environment to match the
+echo location of your Java installation.
+
+goto fail
+
+:execute
+@rem Setup the command line
+
+set CLASSPATH=%APP_HOME%\gradle\wrapper\gradle-wrapper.jar
+
+
+@rem Execute Gradle
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain %*
+
+:end
+@rem End local scope for the variables with windows NT shell
+if %ERRORLEVEL% equ 0 goto mainEnd
+
+:fail
+rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of
+rem the _cmd.exe /c_ return code!
+set EXIT_CODE=%ERRORLEVEL%
+if %EXIT_CODE% equ 0 set EXIT_CODE=1
+if not ""=="%GRADLE_EXIT_CONSOLE%" exit %EXIT_CODE%
+exit /b %EXIT_CODE%
+
+:mainEnd
+if "%OS%"=="Windows_NT" endlocal
+
+:omega
+</file>
+
+<file path="nbproject/project.properties">
+
+</file>
+
+<file path="settings.gradle">
+rootProject.name = '750014C-EF-ApellidoNombre'
+</file>
+
+<file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/backend/logic/BusinessLogicInterface.java">
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package co.edu.uvpalmira.fpoe.exfinal.backend.logic;
+
+import co.edu.uvpalmira.fpoe.exfinal.entities.Editorial;
+import jakarta.persistence.NoResultException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.List;
+
+/**
+ *
+ * @author ajvelez
+ */
+public interface BusinessLogicInterface {
+  
+    public List<Editorial> getEditoriales();
+
+    public void guardar(Editorial editorial) throws SQLIntegrityConstraintViolationException, Exception;
+
+    public Editorial buscarEditorial(Long nit) throws NoResultException, Exception;
+
+}
+</file>
+
+<file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/util/SelectOneMenuConverter.java">
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package co.edu.uvpalmira.fpoe.exfinal.util;
+
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.convert.Converter;
+import jakarta.faces.convert.FacesConverter;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ *
+ * @author Univalle
+ */
+@FacesConverter(value = "selectOneConverter")
+public class SelectOneMenuConverter implements Converter<Object> {
+
+    private final Map<String, Object> map = new HashMap<>();
+
+    @Override
+    public Object getAsObject(FacesContext fc, UIComponent uic, String string) {
+        if (string == null || string.isBlank()) {
+            return null;
+        }
+
+        return map.get(string);
+    }
+
+    @Override
+    public String getAsString(FacesContext fc, UIComponent uic, Object t) {
+        if (t == null) {
+            return "";
+        }
+        if (!map.containsKey(t.toString())) {
+            map.put(t.toString(), t);
+        }
+        return t.toString();
+    }
+}
+</file>
+
+<file path="src/main/java/co/edu/uvpalmira/fpoe/persistence/jpalib/AbstractDAO.java">
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package co.edu.uvpalmira.fpoe.persistence.jpalib;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Query;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
+import java.io.Serializable;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.List;
+
+/**
+ *
+ * @author Antonio J. Vélez Q.
+ * @param <T> Entidad que hereda de co.avsoft.persistence.entity.AbstractEntity
+ */
+public abstract class AbstractDAO<T extends AbstractEntity> implements Serializable {
+
+    private final Class<T> entityClass;
+
+    protected EntityManagerFactory emf = null;
+
+    public AbstractDAO(Class<T> entityClass, EntityManagerFactory emf) {
+        this.entityClass = entityClass;
+        this.emf = emf;
+    }
+
+    public EntityManager getEntityManager() {
+        return emf.createEntityManager();
+    }
+
+    public void create(T entity) throws SQLIntegrityConstraintViolationException, Exception {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            em.persist(entity);
+            em.getTransaction().commit();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+
+    public void edit(T entity) throws NonexistentEntityException, Exception {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            entity = em.merge(entity);
+            em.getTransaction().commit();
+        } catch (Exception ex) {
+            String msg = ex.getLocalizedMessage();
+            if (msg == null || msg.length() == 0) {
+                Long id = entity.getId();
+                if (find(id) == null) {
+                    throw new NonexistentEntityException("The waste with id " + id + " no longer exists.");
+                }
+            }
+            throw ex;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+
+    public void destroy(Long id) throws NonexistentEntityException
+    {
+//        EntityManager em = null;
+//        try {
+//            em = getEntityManager();
+//            em.getTransaction().begin();
+//            T entity;
+//            try {
+//                entity = em.getReference(T.class, id);
+//                entity.getCode();
+//            } catch (EntityNotFoundException enfe) {
+//                throw new NonexistentEntityException("The waste with id " + id + " no longer exists.", enfe);
+//            }
+//            em.remove(entity);
+//            em.getTransaction().commit();
+//        } finally {
+//            if (em != null) {
+//                em.close();
+//            }
+//        }
+    }
+
+    public List<T> findEntities() {
+        return findEntities(true, -1, -1, null);
+    }
+
+    public List<T> findEntities(String orderBy) {
+        return findEntities(true, -1, -1, orderBy);
+    }
+
+    public List<T> findEntities(int maxResults, int firstResult) {
+        return findEntities(false, maxResults, firstResult, null);
+    }
+
+    public List<T> findEntities(int maxResults, int firstResult, String orderedBy) {
+        return findEntities(false, maxResults, firstResult, orderedBy);
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<T> findEntities(boolean all, int maxResults, int firstResult, String orderedBy) {
+        EntityManager em = getEntityManager();
+        try {
+            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+            
+            Root<T> root = cq.from(entityClass); // +
+//            cq.select(cq.from(entityClass));
+            cq.select(root);
+            if (orderedBy != null) { // +
+                cq.orderBy(em.getCriteriaBuilder().asc(root.get(orderedBy)));
+            }
+            Query q = em.createQuery(cq);
+            if (!all) {
+                q.setMaxResults(maxResults);
+                q.setFirstResult(firstResult);
+            }
+            return q.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public T find(Long id) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.find(entityClass, id);
+        } finally {
+            em.close();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public int count() {
+        EntityManager em = getEntityManager();
+        try {
+//            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+//            Root<T> rt = cq.from(entityClass);
+//            cq.select(em.getCriteriaBuilder().count(rt));
+//            Query q = em.createQuery(cq);
+//            return ((Long) q.getSingleResult()).intValue();
+            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+            Root<T> rt = cq.from(entityClass);
+            cq.select(em.getCriteriaBuilder().count(rt));
+            @SuppressWarnings("unchecked")
+            Query q = em.createQuery(cq);
+            return ((Long) q.getSingleResult()).intValue();
+        } finally {
+            em.close();
+        }
+    }
+
+    public void save(T entity) throws SQLIntegrityConstraintViolationException, Exception {
+
+        if (entity.getId() == null || entity.getId() == 0) {
+            this.create(entity);
+        } else {
+            this.edit(entity);
+        }
+    }
+
+}
+</file>
+
+<file path="src/main/java/co/edu/uvpalmira/fpoe/persistence/jpalib/AbstractEntity.java">
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package co.edu.uvpalmira.fpoe.persistence.jpalib;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+import java.io.Serializable;
+import java.util.Objects;
+
+/**
+ *
+ * @author Sistemas
+ */
+@MappedSuperclass
+public abstract class AbstractEntity implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
+
+    public AbstractEntity() {
+    }
+
+    public AbstractEntity(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final AbstractEntity other = (AbstractEntity) obj;
+
+        return Objects.equals(this.id, other.id);
+    }
+}
+</file>
+
+<file path="src/main/java/co/edu/uvpalmira/fpoe/persistence/jpalib/IllegalOrphanException.java">
+package co.edu.uvpalmira.fpoe.persistence.jpalib;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class IllegalOrphanException extends Exception {
+    private List<String> messages;
+    public IllegalOrphanException(List<String> messages) {
+        super((messages != null && messages.size() > 0 ? messages.get(0) : null));
+        if (messages == null) {
+            this.messages = new ArrayList<String>();
+        }
+        else {
+            this.messages = messages;
+        }
+    }
+    public List<String> getMessages() {
+        return messages;
+    }
+}
+</file>
+
+<file path="src/main/java/co/edu/uvpalmira/fpoe/persistence/jpalib/NonexistentEntityException.java">
+package co.edu.uvpalmira.fpoe.persistence.jpalib;
+
+public class NonexistentEntityException extends Exception {
+    public NonexistentEntityException(String message, Throwable cause) {
+        super(message, cause);
+    }
+    public NonexistentEntityException(String message) {
+        super(message);
+    }
+}
+</file>
+
+<file path="src/main/java/co/edu/uvpalmira/fpoe/persistence/jpalib/PreexistingEntityException.java">
+package co.edu.uvpalmira.fpoe.persistence.jpalib;
+
+public class PreexistingEntityException extends Exception {
+    public PreexistingEntityException(String message, Throwable cause) {
+        super(message, cause);
+    }
+    public PreexistingEntityException(String message) {
+        super(message);
+    }
+}
+</file>
+
+<file path="src/main/resources/labels.properties">
+# Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+# Click nbfs://nbhost/SystemFileSystem/Templates/Other/properties.properties to edit this template
+
+accion.guardar.label = Guardar
+accion.borrar.label = Limpiar Formulario
+accion.prestamo.registrar.label = Realizar Pr\u00e9stamo
+
+
+xhtml.editoriales.label = Gestionar Editoriales
+xhtml.libros.label = Gestionar Libros
+xhtml.prestamos.label = Registrar Prestamos
+xhtml.prestamos.activos.label = Pr\u00e9stamos Activos del Estudiante
+
+
+selectone.label = Seleccione ...
+
+editorial.nit.label = NIT
+editorial.nombre.label = Nombre
+editorial.email.label = Correo Electr\u00f3nico
+
+libro.label = Libro
+libro.isbn.label = ISBN
+libro.titulo.label = T\u00edtulo
+libro.autor.label = Autor
+libro.editorial.label = Editorial
+
+estudiante.label = Estudiante
+estudiante.codigo.label = C\u00f3digo
+estudiante.nombres.label = Nombres
+estudiante.apellidos.label = Apellidos
+</file>
+
+<file path="src/main/resources/META-INF/persistence.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" 
+             xmlns="https://jakarta.ee/xml/ns/persistence" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+    <!-- 
+    Unidad persistente para la conexión a través del servidor web usando en MySQL
+    -->
+    <persistence-unit name="FPOE-PU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/fpoe</jta-data-source>
+        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Editorial</class>
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
+        </properties>
+    </persistence-unit>
+
+ 
+   
+    <!-- 
+    Unidad persistente para la conexión a través del servidor web usando PostgreSQL
+    -->
+<!--    <persistence-unit name="FPOE-PU-PostgreSQL" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/fpoepostgresql</jta-data-source>
+        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Editorial</class>
+        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Libro</class>
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
+        </properties>
+    </persistence-unit>-->
+</persistence>
+</file>
+
+<file path="src/main/webapp/editoriales.xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{label['xhtml.editoriales.label']}</title>
+    </h:head>
+    <h:body>
+
+        <f:loadBundle var="label" basename="labels" />
+
+        <h:form>
+            <p:card title="#{label['xhtml.editoriales.label']}"> 
+
+                <h:panelGrid columns="3" >
+                    <p:outputLabel value="#{label['editorial.nit.label']}" for="nit" /> 
+                    <h:panelGrid columns="2">
+                        <p:inputNumber id="nit" decimalPlaces="0" emptyValue="" />
+                        <p:commandButton icon="pi pi-search"  />
+                    </h:panelGrid>
+                    <p:message for="nit" />
+
+                    <p:outputLabel value="#{label['editorial.nombre.label']}" for="@next" /> 
+                    <p:inputText id="nombre"  />
+                    <p:message for="@previous" />
+
+                </h:panelGrid>
+
+                <f:facet name="footer"> 
+                    <p:commandButton value="#{label['accion.guardar.label']}" 
+                                     icon="pi pi-save" />
+                    <p:spacer width="2" />
+                    <p:commandButton value="#{label['accion.borrar.label']}" 
+                                     icon="pi pi-times" />
+                </f:facet>
+
+                <p:messages id="mensajes" globalOnly="true" />
+            </p:card>
+        </h:form>
+
+
+        <p:dataTable >
+            <p:column headerText="#{label['editorial.nit.label']}">
+            </p:column>
+            <p:column headerText="#{label['editorial.nombre.label']}">
+            </p:column>
+        </p:dataTable>
+
+    </h:body>
+</html>
+</file>
+
+<file path="src/main/webapp/WEB-INF/beans.xml">
+<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+       http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
+       version="1.1" bean-discovery-mode="all">
+</beans>
+</file>
+
+<file path="src/main/webapp/WEB-INF/glassfish-web.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glassfish-web-app PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Servlet 3.0//EN" "http://glassfish.org/dtds/glassfish-web-app_3_0-1.dtd">
+<!--
+    Copyright (c) 1997, 2018 Oracle and/or its affiliates. All rights reserved.
+    
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+-->
+<glassfish-web-app error-url="">
+  <context-root>fpoex</context-root>
+  <class-loader delegate="true"/>
+  <jsp-config>
+    <property name="keepgenerated" value="true">
+      <description>Keep a copy of the generated servlet class' java code.</description>
+    </property>
+  </jsp-config>
+</glassfish-web-app>
+</file>
+
+<file path="src/main/webapp/WEB-INF/web.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+	 version="5.0">
+    <!--
+     jakarta.faces.PROJECT_STAGE describe dónde se encuentra esta aplicación 
+     en el ciclo de vida desarrollo de software de Jakarta Faces. 
+     Los valores válidos son "Desarrollo", "UnitTest", "SystemTest" o "Producción"
+    -->
+    <context-param>
+        <param-name>jakarta.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    <!--
+     Los archivos jakarta Faces (.xhtml) deben ser procesados por la plataforma 
+     Jakarta EE antes de ser transferidos al cliente web como documentos HTML. 
+     Las siguientes instrucciones:
+       - Especifican la clase encargada de procesar los archivos Jakarta Faces
+       - Especificación de la extensión de los archivos Jakarta Faces
+    -->
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+    <!--
+     Especificación de la página inicial de la aplicaci{on
+    -->
+    <welcome-file-list>
+        <welcome-file>editoriales.xhtml</welcome-file>
+    </welcome-file-list>
+    <!--
+    -->
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/error.xhtml</location>
+    </error-page>
+    
+        <!--
+    JSF1091: no se ha encontrado ningún tipo MIME para el archivo primeicons/primeicons.eot.  
+    Para resolverlo, agregue una asignación de tipo MIME al archivo web.xml de la aplicación.|#]
+    Solución tomada de : https://forum.primefaces.org/viewtopic.php?t=44247
+    -->
+    <mime-mapping>
+        <extension>ttf</extension>
+        <mime-type>application/x-font-ttf</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>woff</extension>
+        <mime-type>application/x-font-woff</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>woff2</extension>
+        <mime-type>application/x-font-woff2</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>eot</extension>
+        <mime-type>application/x-font-eot</mime-type>
+    </mime-mapping>
+
+</web-app>
+</file>
+
+<file path="src/test/resources/META-INF/persistence.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" 
+             xmlns="https://jakarta.ee/xml/ns/persistence" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+  
+    <!-- 
+    Unidad persistente para la ejecusión de las pruebas unitarias usando MySQL
+    --> 
+    
+    <persistence-unit name="FPOE-Test-PU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Editorial</class>
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/fpoedb?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value="roottoor"/>
+            
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>            
+            <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
+        </properties>    
+    </persistence-unit>
+  
+    <!-- 
+    Unidad persistente para la ejecusión de las pruebas unitarias usando PostgreSQL
+    --> 
+
+    <persistence-unit name="FPOE-Test-PU-PostgreSQL" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Editorial</class>
+        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Libro</class>
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/fpoedb"/>
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.user" value="postgres"/>
+            <property name="jakarta.persistence.jdbc.password" value="postgres"/>
+            
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
+        </properties>    
+    </persistence-unit>
+
+</persistence>
+</file>
+
+<file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/backend/dao/EditorialDAO.java">
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package co.edu.uvpalmira.fpoe.exfinal.backend.dao;
+
+import co.edu.uvpalmira.fpoe.exfinal.entities.Editorial;
+import co.edu.uvpalmira.fpoe.persistence.jpalib.AbstractDAO;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import java.util.List;
+
+/**
+ *
+ * @author ajvelez
+ */
+public class EditorialDAO extends AbstractDAO<Editorial> {
+
+    public EditorialDAO(EntityManagerFactory emf) {
+        super(Editorial.class, emf);
+    }
+
+    public Editorial buscarPorNit(long nit) {
+        EntityManager em = super.getEntityManager();
+        return (Editorial) em.createNamedQuery("Editorial.buscarPorNit").setParameter("nit", nit).getResultList();
+
+    }
+
+   /* public List<Editorial> todosEditoriales(String codigoEditorial) {
+        EntityManager em = super.getEntityManager();
+        return em.createNamedQuery("Editorial.todosEditoriales")
+                .setParameter("prefijo", codigoEditorial)
+                .getResultList();
+    }
+*/
+}
+</file>
+
+<file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/backend/logic/BussinessLogicImp.java">
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package co.edu.uvpalmira.fpoe.exfinal.backend.logic;
+
+import co.edu.uvpalmira.fpoe.exfinal.backend.dao.EditorialDAO;
+import co.edu.uvpalmira.fpoe.exfinal.entities.Editorial;
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.PersistenceUnit;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.List;
+
+/**
+ *
+ * @author ajvelez
+ */
+@ApplicationScoped
+public class BussinessLogicImp implements BusinessLogicInterface {
+
+    // AV-TODO: Cambiar
+    @PersistenceUnit(name = "FPOE-PU")
+    private EntityManagerFactory emf;
+
+    private EditorialDAO editorialDAO;
+
+    @PostConstruct
+    public void init() {
+        this.editorialDAO = new EditorialDAO(this.emf);
+    }
+
+    @Override
+    public List<Editorial> getEditoriales() {
+        return this.editorialDAO.findEntities();
+    }
+
+    @Override
+    public void guardar(Editorial editorial) throws SQLIntegrityConstraintViolationException, Exception {
+        this.editorialDAO.create(editorial);
+    }
+
+    @Override
+    public Editorial buscarEditorial(Long nit) throws NoResultException, Exception {
+        return this.editorialDAO.buscarPorNit(nit);
+    }
+
+}
+</file>
+
+<file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/entities/Editorial.java">
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package co.edu.uvpalmira.fpoe.exfinal.entities;
+
+import co.edu.uvpalmira.fpoe.persistence.jpalib.AbstractEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.validation.constraints.NotEmpty;
+
+/**
+ *
+ * @author Univalle
+ */
+@Entity
+@NamedQueries({
+    @NamedQuery(name = "e.buscarPorNit", query = "SELECT e FROM Editorial e WHERE e.nit= :nit"),
+    //@NamedQuery(name="e.buscarCompleto",query= "SELECT e FROM Editorial e WHERE e.nit LIKE :prefijo ORDER BY e.nit ASC")
+})
+public class Editorial extends AbstractEntity {
+    @NotEmpty
+    @Column(nullable = false, unique = true)
+    private long nit;
+    @NotEmpty
+    @Column(nullable = false)
+    private String nombre;
+
+    public Editorial(long nit, String nombre) {
+        this.nit = nit;
+        this.nombre = nombre;
+    }
+
+    public Editorial() {
+        this.nit = 0;
+        this.nombre = "";
+    }
+
+    public long getNit() {
+        return nit;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNit(long nit) {
+        this.nit = nit;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+}
+</file>
+
+<file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/frontend/controller/EditorialController.java">
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package co.edu.uvpalmira.fpoe.exfinal.frontend.controller;
+
+import co.edu.uvpalmira.fpoe.exfinal.entities.Editorial;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import java.io.Serializable;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import co.edu.uvpalmira.fpoe.exfinal.backend.logic.BusinessLogicInterface;
+import jakarta.persistence.NoResultException;
+import java.sql.SQLIntegrityConstraintViolationException;
+
+/**
+ *
+ * @author ajvelez
+ */
+@Named(value = "edctrl")
+@SessionScoped
+public class EditorialController implements Serializable {
+
+    private Editorial editorial = new Editorial(12345678, "editorial");
+    @Inject
+    private BusinessLogicInterface logic;
+
+    public Editorial buscarEditorial() {
+        try {
+            return editorial;
+        } catch (NoResultException ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("no se encontro la editorial"));
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("error desconocido, contacte con el desarrollador"));
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<Editorial> getEditoriales() {
+        return this.logic.getEditoriales();
+    }
+
+    public void guardar() {
+        try {
+            this.logic.guardar(editorial);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("la editorial fue registrada"));
+        } catch (SQLIntegrityConstraintViolationException ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("error de restricciones"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("error desconocido, contacte con el desarrollador"));
+        }
+
+    }
+}
+</file>
+
+<file path="src/main/resources/data.sql">
+INSERT INTO editorial (nit, nombre) VALUES (8903990106, 'Editorial Universidad del Valle');
+INSERT INTO editorial (nit, nombre) VALUES (8300022877, 'Panamericana Editorial');
+INSERT INTO editorial (nit, nombre) VALUES (8605334677, 'Villegas Editores');
+
+INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Daniela Violi', 'DISPONIBLE', 9788417400989, 'Sé un algoritmo irrepetible', 2);
+INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Francisco Leal Quevedo, Amalia Leal Córdoba', 'DISPONIBLE', 9789583068317, '¿A dónde viajan los gatos?', 2);
+
+INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Consuelo Lago', 'DISPONIBLE', 9786287542198, 'NIEVES 55 AÑOS', 3);
+INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Murray Cooper', 'DISPONIBLE', 9789588818368, 'COLIBRÍES EN COLOMBIA', 3);
+</file>
+
+<file path="src/test/java/co/edu/uvpalmira/fpoe/exfinal/backend/dao/EditorialDAOTest.java">
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
+ */
+package co.edu.uvpalmira.fpoe.exfinal.backend.dao;
+
+import co.edu.uvpalmira.fpoe.exfinal.entities.Editorial;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
+
+//import org.junit.jupiter.api.Order;
+//import org.junit.jupiter.api.TestMethodOrder;
+/**
+ *
+ * @author ajvelez
+ */
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class EditorialDAOTest {
+
+    private EditorialDAO editorialDAO;
+
+    public EditorialDAOTest() {
+        //AV-TODO
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("FPOE-Test-PU");
+        this.editorialDAO = new EditorialDAO(emf);
+    }
+
+    @Order(2)
+    @Test
+    public void testFind() throws Exception {
+        Editorial editorial = this.editorialDAO.buscarPorNit(8903990106L);
+        assertEquals("Editorial Universidad del Valle", editorial.getNombre());
+    }
+
+}
+</file>
+
+</files>

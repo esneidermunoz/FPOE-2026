@@ -30,7 +30,7 @@ public class EditorialController implements Serializable {
     @Inject
     private BusinessLogicInterface logic;
 
-    public Editorial buscarEditorial() {
+    public Editorial getEditorial() {
         try {
             return editorial;
         } catch (NoResultException ex) {
@@ -41,6 +41,10 @@ public class EditorialController implements Serializable {
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public void setEditorial(Editorial editorial) {
+        this.editorial = editorial;
     }
 
     public List<Editorial> getEditoriales() {
@@ -57,5 +61,10 @@ public class EditorialController implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("error desconocido, contacte con el desarrollador"));
         }
 
+    }
+
+    public void cancelar() {
+        this.editorial = new Editorial();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("proceso cancelado"));
     }
 }

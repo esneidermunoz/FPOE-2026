@@ -1,0 +1,21 @@
+â[EL Info]: 2026-06-10 11:37:39.808--ServerSession(1146848727)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306161219
+À[EL Warning]: 2026-06-10 11:37:41.296--ServerSession(1146848727)--Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306161219): org.eclipse.persistence.exceptions.DatabaseException
+ZInternal Exception: java.sql.SQLSyntaxErrorException: Table 'fpoedb.libro' doesn't exist
+Error Code: 1146
+üCall: INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Daniela Violi', 'DISPONIBLE', 9788417400989, 'S√© un algoritmo irrepetible', 2);
+∑Query: DataModifyQuery(sql="INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Daniela Violi', 'DISPONIBLE', 9788417400989, 'S√© un algoritmo irrepetible', 2);")
+À[EL Warning]: 2026-06-10 11:37:41.317--ServerSession(1146848727)--Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306161219): org.eclipse.persistence.exceptions.DatabaseException
+ZInternal Exception: java.sql.SQLSyntaxErrorException: Table 'fpoedb.libro' doesn't exist
+Error Code: 1146
+æCall: INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Francisco Leal Quevedo, Amalia Leal C√≥rdoba', 'DISPONIBLE', 9789583068317, '¬øA d√≥nde viajan los gatos?', 2);
+÷Query: DataModifyQuery(sql="INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Francisco Leal Quevedo, Amalia Leal C√≥rdoba', 'DISPONIBLE', 9789583068317, '¬øA d√≥nde viajan los gatos?', 2);")
+À[EL Warning]: 2026-06-10 11:37:41.321--ServerSession(1146848727)--Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306161219): org.eclipse.persistence.exceptions.DatabaseException
+ZInternal Exception: java.sql.SQLSyntaxErrorException: Table 'fpoedb.libro' doesn't exist
+Error Code: 1146
+íCall: INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Consuelo Lago', 'DISPONIBLE', 9786287542198, 'NIEVES 55 A√ëOS', 3);
+™Query: DataModifyQuery(sql="INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Consuelo Lago', 'DISPONIBLE', 9786287542198, 'NIEVES 55 A√ëOS', 3);")
+À[EL Warning]: 2026-06-10 11:37:41.325--ServerSession(1146848727)--Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306161219): org.eclipse.persistence.exceptions.DatabaseException
+ZInternal Exception: java.sql.SQLSyntaxErrorException: Table 'fpoedb.libro' doesn't exist
+Error Code: 1146
+ôCall: INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Murray Cooper', 'DISPONIBLE', 9789588818368, 'COLIBR√çES EN COLOMBIA', 3);
+±Query: DataModifyQuery(sql="INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Murray Cooper', 'DISPONIBLE', 9789588818368, 'COLIBR√çES EN COLOMBIA', 3);")
