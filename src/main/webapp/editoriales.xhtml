@@ -21,7 +21,7 @@
                     <p:outputLabel value="#{label['editorial.nit.label']}" for="nit" /> 
                     <h:panelGrid columns="2">
                         <p:inputNumber id="nit" value="#{edctrl.editorial.nit}" decimalPlaces="0" emptyValue="0" />
-                        <p:commandButton icon="pi pi-search" action="#{edctrl.getEditorial()}" update="@form" process="nit @this" />
+                        <p:commandButton icon="pi pi-search" action="#{edctrl.buscarEditorial()}" update="@form" process="nit @this" />
                     </h:panelGrid>
                     <p:message for="nit" />
 

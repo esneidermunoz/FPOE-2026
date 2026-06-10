@@ -1054,62 +1054,6 @@ estudiante.apellidos.label = Apellidos
 </persistence>
 </file>
 
-<file path="src/main/webapp/editoriales.xhtml">
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>#{label['xhtml.editoriales.label']}</title>
-    </h:head>
-    <h:body>
-
-        <f:loadBundle var="label" basename="labels" />
-
-        <h:form>
-            <p:card title="#{label['xhtml.editoriales.label']}"> 
-
-                <h:panelGrid columns="3" >
-                    <p:outputLabel value="#{label['editorial.nit.label']}" for="nit" /> 
-                    <h:panelGrid columns="2">
-                        <p:inputNumber id="nit" decimalPlaces="0" emptyValue="" />
-                        <p:commandButton icon="pi pi-search"  />
-                    </h:panelGrid>
-                    <p:message for="nit" />
-
-                    <p:outputLabel value="#{label['editorial.nombre.label']}" for="@next" /> 
-                    <p:inputText id="nombre"  />
-                    <p:message for="@previous" />
-
-                </h:panelGrid>
-
-                <f:facet name="footer"> 
-                    <p:commandButton value="#{label['accion.guardar.label']}" 
-                                     icon="pi pi-save" />
-                    <p:spacer width="2" />
-                    <p:commandButton value="#{label['accion.borrar.label']}" 
-                                     icon="pi pi-times" />
-                </f:facet>
-
-                <p:messages id="mensajes" globalOnly="true" />
-            </p:card>
-        </h:form>
-
-
-        <p:dataTable >
-            <p:column headerText="#{label['editorial.nit.label']}">
-            </p:column>
-            <p:column headerText="#{label['editorial.nombre.label']}">
-            </p:column>
-        </p:dataTable>
-
-    </h:body>
-</html>
-</file>
-
 <file path="src/main/webapp/WEB-INF/glassfish-web.xml">
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glassfish-web-app PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Servlet 3.0//EN" "http://glassfish.org/dtds/glassfish-web-app_3_0-1.dtd">
@@ -1274,6 +1218,71 @@ INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Consuelo 
 INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Murray Cooper', 'DISPONIBLE', 9789588818368, 'COLIBRÍES EN COLOMBIA', 3);
 </file>
 
+<file path="src/main/webapp/editoriales.xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{label['xhtml.editoriales.label']}</title>
+    </h:head>
+    <h:body>
+
+        <f:loadBundle var="label" basename="labels" />
+
+        <h:form id="formEditoriales">
+            <p:growl id="msjs" showDetail="false" />
+
+            <p:card title="#{label['xhtml.editoriales.label']}"> 
+
+                <h:panelGrid columns="3" >
+                    <p:outputLabel value="#{label['editorial.nit.label']}" for="nit" /> 
+                    <h:panelGrid columns="2">
+                        <p:inputNumber id="nit" value="#{edctrl.editorial.nit}" decimalPlaces="0" emptyValue="0" />
+                        <p:commandButton icon="pi pi-search" action="#{edctrl.getEditorial()}" update="@form" process="nit @this" />
+                    </h:panelGrid>
+                    <p:message for="nit" />
+
+                    <p:outputLabel value="#{label['editorial.nombre.label']}" for="nombre" /> 
+                    <p:inputText id="nombre" value="#{edctrl.editorial.nombre}" required="true" requiredMessage="El nombre es obligatorio" />
+                    <p:message for="nombre" />
+
+                </h:panelGrid>
+
+                <f:facet name="footer"> 
+                    <p:commandButton value="#{label['accion.guardar.label']}" 
+                                     action="#{edctrl.guardar()}" 
+                                     icon="pi pi-save" 
+                                     update="@form tablaEditoriales" />
+                    <p:spacer width="5" />
+                    <p:commandButton value="#{label['accion.borrar.label']}" 
+                                     action="#{edctrl.cancelar()}" 
+                                     icon="pi pi-times" 
+                                     update="@form"
+                                     process="@this" />
+                </f:facet>
+            </p:card>
+
+            <p:spacer height="20" />
+
+            <p:dataTable id="tablaEditoriales" value="#{edctrl.editoriales}" var="publi" emptyMessage="No hay editoriales registradas">
+                <p:column headerText="#{label['editorial.nit.label']}">
+                    <h:outputText value="#{publi.nit}" />
+                </p:column>
+                <p:column headerText="#{label['editorial.nombre.label']}">
+                    <h:outputText value="#{publi.nombre}" />
+                </p:column>
+            </p:dataTable>
+            
+        </h:form>
+
+    </h:body>
+</html>
+</file>
+
 <file path="src/main/webapp/WEB-INF/beans.xml">
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="https://jakarta.ee/xml/ns/jakartaee"
@@ -1403,66 +1412,6 @@ public class EditorialDAO extends AbstractDAO<Editorial> {
 }
 </file>
 
-<file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/entities/Editorial.java">
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package co.edu.uvpalmira.fpoe.exfinal.entities;
-
-import co.edu.uvpalmira.fpoe.persistence.jpalib.AbstractEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-import jakarta.validation.constraints.NotEmpty;
-
-/**
- *
- * @author Univalle
- */
-@Entity
-@NamedQueries({
-    @NamedQuery(name = "Editorial.buscarPorNit", query = "SELECT e FROM Editorial e WHERE e.nit= :nit"),
-    //@NamedQuery(name="e.buscarCompleto",query= "SELECT e FROM Editorial e WHERE e.nit LIKE :prefijo ORDER BY e.nit ASC")
-})
-public class Editorial extends AbstractEntity {
-    @NotEmpty
-    @Column(nullable = false, unique = true)
-    private long nit;
-    @NotEmpty
-    @Column(nullable = false)
-    private String nombre;
-
-    public Editorial(long nit, String nombre) {
-        this.nit = nit;
-        this.nombre = nombre;
-    }
-
-    public Editorial() {
-        this.nit = 0;
-        this.nombre = "";
-    }
-
-    public long getNit() {
-        return nit;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNit(long nit) {
-        this.nit = nit;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-}
-</file>
-
 <file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/frontend/controller/EditorialController.java">
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -1533,6 +1482,65 @@ public class EditorialController implements Serializable {
         this.editorial = new Editorial();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("proceso cancelado"));
     }
+}
+</file>
+
+<file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/entities/Editorial.java">
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package co.edu.uvpalmira.fpoe.exfinal.entities;
+
+import co.edu.uvpalmira.fpoe.persistence.jpalib.AbstractEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.validation.constraints.NotEmpty;
+
+/**
+ *
+ * @author Univalle
+ */
+@Entity
+@NamedQueries({
+    @NamedQuery(name = "Editorial.buscarPorNit", query = "SELECT e FROM Editorial e WHERE e.nit= :nit"),
+    //@NamedQuery(name="e.buscarCompleto",query= "SELECT e FROM Editorial e WHERE e.nit LIKE :prefijo ORDER BY e.nit ASC")
+})
+public class Editorial extends AbstractEntity {
+    @Column(nullable = false, unique = true)
+    private long nit;
+    @NotEmpty
+    @Column(nullable = false)
+    private String nombre;
+
+    public Editorial(long nit, String nombre) {
+        this.nit = nit;
+        this.nombre = nombre;
+    }
+
+    public Editorial() {
+        this.nit = 0;
+        this.nombre = "";
+    }
+
+    public long getNit() {
+        return nit;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNit(long nit) {
+        this.nit = nit;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
 }
 </file>
 

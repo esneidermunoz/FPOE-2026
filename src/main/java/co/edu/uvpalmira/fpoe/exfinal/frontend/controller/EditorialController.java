@@ -31,17 +31,22 @@ public class EditorialController implements Serializable {
     private BusinessLogicInterface logic;
 
     public Editorial getEditorial() {
-        try {
             return editorial;
-        } catch (NoResultException ex) {
+        }
+    
+    public void buscarEditorial(){
+        try{
+            Editorial resultado = this.logic.buscarEditorial(this.editorial.getNit());
+        }catch (NoResultException ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("no se encontro la editorial"));
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("error desconocido, contacte con el desarrollador"));
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+       
     }
+ 
 
     public void setEditorial(Editorial editorial) {
         this.editorial = editorial;
