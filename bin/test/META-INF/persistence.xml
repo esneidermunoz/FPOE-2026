@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" 
+             xmlns="https://jakarta.ee/xml/ns/persistence" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+  
+    <!-- 
+    Unidad persistente para la ejecusión de las pruebas unitarias usando MySQL
+    --> 
+    
+    <persistence-unit name="FPOE-Test-PU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Editorial</class>
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/fpoedb?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value="roottoor"/>
+            
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>            
+            <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
+        </properties>    
+    </persistence-unit>
+  
+    <!-- 
+    Unidad persistente para la ejecusión de las pruebas unitarias usando PostgreSQL
+    --> 
+
+    <persistence-unit name="FPOE-Test-PU-PostgreSQL" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Editorial</class>
+        <class>co.edu.uvpalmira.fpoe.exfinal.entities.Libro</class>
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/fpoedb"/>
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.user" value="postgres"/>
+            <property name="jakarta.persistence.jdbc.password" value="postgres"/>
+            
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
+        </properties>    
+    </persistence-unit>
+
+</persistence>

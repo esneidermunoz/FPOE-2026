@@ -1,12 +1,3 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Other/SQLTemplate.sql to edit this template
- */
-/**
- * Author:  ajvelez
- * Created: 6/06/2024
- */
-
 INSERT INTO editorial (nit, nombre) VALUES (8903990106, 'Editorial Universidad del Valle');
 INSERT INTO editorial (nit, nombre) VALUES (8300022877, 'Panamericana Editorial');
 INSERT INTO editorial (nit, nombre) VALUES (8605334677, 'Villegas Editores');

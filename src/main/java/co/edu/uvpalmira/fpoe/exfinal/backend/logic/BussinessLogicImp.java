@@ -34,17 +34,17 @@ public class BussinessLogicImp implements BusinessLogicInterface {
 
     @Override
     public List<Editorial> getEditoriales() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.editorialDAO.findEntities();
     }
 
     @Override
     public void guardar(Editorial editorial) throws SQLIntegrityConstraintViolationException, Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.editorialDAO.create(editorial);
     }
 
     @Override
     public Editorial buscarEditorial(Long nit) throws NoResultException, Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.editorialDAO.buscarPorNit(nit);
     }
 
 }

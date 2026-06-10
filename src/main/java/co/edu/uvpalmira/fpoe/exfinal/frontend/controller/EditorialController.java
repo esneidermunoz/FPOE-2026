@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import co.edu.uvpalmira.fpoe.exfinal.backend.logic.BusinessLogicInterface;
 import jakarta.persistence.NoResultException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 /**
  *
@@ -25,8 +26,36 @@ import jakarta.persistence.NoResultException;
 @SessionScoped
 public class EditorialController implements Serializable {
 
+    private Editorial editorial = new Editorial(12345678, "editorial");
     @Inject
     private BusinessLogicInterface logic;
 
+    public Editorial buscarEditorial() {
+        try {
+            return editorial;
+        } catch (NoResultException ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("no se encontro la editorial"));
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("error desconocido, contacte con el desarrollador"));
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 
+    public List<Editorial> getEditoriales() {
+        return this.logic.getEditoriales();
+    }
+
+    public void guardar() {
+        try {
+            this.logic.guardar(editorial);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("la editorial fue registrada"));
+        } catch (SQLIntegrityConstraintViolationException ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("error de restricciones"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("error desconocido, contacte con el desarrollador"));
+        }
+
+    }
 }

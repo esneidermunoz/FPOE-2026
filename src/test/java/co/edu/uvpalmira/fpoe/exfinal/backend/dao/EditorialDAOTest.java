@@ -30,11 +30,11 @@ public class EditorialDAOTest {
         this.editorialDAO = new EditorialDAO(emf);
     }
 
-//    @Order(2)
-//    @Test
-//    public void testFind() throws Exception {
-//        Editorial editorial = this.editorialDAO.findByNIT(8903990106L);
-//        assertEquals("Editorial Universidad del Valle", editorial.getNombre());
-//    }
+    @Order(2)
+    @Test
+    public void testFind() throws Exception {
+        Editorial editorial = this.editorialDAO.buscarPorNit(8903990106L);
+        assertEquals("Editorial Universidad del Valle", editorial.getNombre());
+    }
 
 }
