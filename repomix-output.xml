@@ -59,7 +59,6 @@ bin/main/META-INF/persistence.xml
 bin/test/co/edu/uvpalmira/fpoe/exfinal/backend/dao/EditorialDAOTest.class
 bin/test/META-INF/persistence.xml
 build.gradle
-glassfish-resources.xml
 gradlew
 gradlew.bat
 nbproject/project.properties
@@ -268,104 +267,6 @@ dependencies {
     implementation 'org.primefaces:primefaces:12.0.0:jakarta'
 
 }
-</file>
-
-<file path="glassfish-resources.xml">
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE resources PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN" "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
-<resources>
-    <!--Conexión a la base de datos usando MySQL-->
-    
-    <jdbc-resource  jndi-name="jdbc/fpoe" 
-                    enabled="true" 
-                    object-type="user" 
-                    pool-name="fpoeConnectionPool">
-        <description/>
-    </jdbc-resource>
-    <jdbc-connection-pool name="fpoeConnectionPool" 
-                          allow-non-component-callers="false" 
-                          associate-with-thread="false" 
-                          connection-creation-retry-attempts="0" 
-                          connection-creation-retry-interval-in-seconds="10" 
-                          connection-leak-reclaim="false" 
-                          connection-leak-timeout-in-seconds="0" 
-                          connection-validation-method="auto-commit" 
-                          datasource-classname="com.mysql.cj.jdbc.MysqlConnectionPoolDataSource" 
-                          fail-all-connections="false" 
-                          idle-timeout-in-seconds="300" 
-                          is-connection-validation-required="false" 
-                          is-isolation-level-guaranteed="true" 
-                          lazy-connection-association="false" 
-                          lazy-connection-enlistment="false" 
-                          match-connections="false" 
-                          max-connection-usage-count="0" 
-                          max-pool-size="32" 
-                          max-wait-time-in-millis="60000" 
-                          non-transactional-connections="false" 
-                          ping="false" 
-                          pool-resize-quantity="2" 
-                          pooling="true" 
-                          res-type="javax.sql.ConnectionPoolDataSource" 
-                          statement-cache-size="0" 
-                          statement-leak-reclaim="false" 
-                          statement-leak-timeout-in-seconds="0" 
-                          statement-timeout-in-seconds="-1" 
-                          steady-pool-size="8" 
-                          validate-atmost-once-period-in-seconds="0" 
-                          wrap-jdbc-objects="false">
-        <property name="URL" value="jdbc:mysql://localhost:3306/fpoedb?useSSL=false"/>
-        <property name="User" value="root"/>
-        <property name="Password" value="roottoor"/>
-        <property name="allowPublicKeyRetrieval" value="true"/>
-        <property name="useSSL" value="false"/>
-    </jdbc-connection-pool>
-
-
-    <!--
-    Conexión a la base de datos usando PostgreSQL
-    -->
-    
-    <jdbc-resource enabled="true" 
-                   jndi-name="jdbc/fpoepostgresql" 
-                   object-type="user" 
-                   pool-name="fpoeConnectionPool-PostgreSQL">
-        <description/>
-    </jdbc-resource>
-    <jdbc-connection-pool name="fpoeConnectionPool-PostgreSQL" 
-                          allow-non-component-callers="false" 
-                          associate-with-thread="false" 
-                          connection-creation-retry-attempts="0" 
-                          connection-creation-retry-interval-in-seconds="10" 
-                          connection-leak-reclaim="false" 
-                          connection-leak-timeout-in-seconds="0" 
-                          connection-validation-method="auto-commit" 
-                          datasource-classname="org.postgresql.ds.PGConnectionPoolDataSource" 
-                          fail-all-connections="false" 
-                          idle-timeout-in-seconds="300" 
-                          is-connection-validation-required="false" 
-                          is-isolation-level-guaranteed="true" 
-                          lazy-connection-association="false" 
-                          lazy-connection-enlistment="false" 
-                          match-connections="false" 
-                          max-connection-usage-count="0" 
-                          max-pool-size="32" 
-                          max-wait-time-in-millis="60000" 
-                          non-transactional-connections="false" 
-                          ping="false" 
-                          pool-resize-quantity="2" 
-                          pooling="true" 
-                          res-type="javax.sql.ConnectionPoolDataSource" 
-                          statement-cache-size="0" 
-                          statement-leak-reclaim="false" 
-                          statement-leak-timeout-in-seconds="0" 
-                          statement-timeout-in-seconds="-1" 
-                          steady-pool-size="8" 
-                          validate-atmost-once-period-in-seconds="0" 
-                          wrap-jdbc-objects="false">        
-        <property name="URL" value="jdbc:postgresql://localhost:5432/fpoedb"/>
-        <property name="User" value="postgres"/>
-        <property name="Password" value="postgres"/>
-    </jdbc-connection-pool></resources>
 </file>
 
 <file path="gradlew">
@@ -1209,15 +1110,6 @@ estudiante.apellidos.label = Apellidos
 </html>
 </file>
 
-<file path="src/main/webapp/WEB-INF/beans.xml">
-<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
-       http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
-       version="1.1" bean-discovery-mode="all">
-</beans>
-</file>
-
 <file path="src/main/webapp/WEB-INF/glassfish-web.xml">
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glassfish-web-app PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Servlet 3.0//EN" "http://glassfish.org/dtds/glassfish-web-app_3_0-1.dtd">
@@ -1317,45 +1209,6 @@ estudiante.apellidos.label = Apellidos
 </web-app>
 </file>
 
-<file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/backend/dao/EditorialDAO.java">
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package co.edu.uvpalmira.fpoe.exfinal.backend.dao;
-
-import co.edu.uvpalmira.fpoe.exfinal.entities.Editorial;
-import co.edu.uvpalmira.fpoe.persistence.jpalib.AbstractDAO;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import java.util.List;
-
-/**
- *
- * @author ajvelez
- */
-public class EditorialDAO extends AbstractDAO<Editorial> {
-
-    public EditorialDAO(EntityManagerFactory emf) {
-        super(Editorial.class, emf);
-    }
-
-    public Editorial buscarPorNit(long nit) {
-        EntityManager em = super.getEntityManager();
-        return (Editorial) em.createNamedQuery("Editorial.buscarPorNit").setParameter("nit", nit).getResultList();
-
-    }
-
-   /* public List<Editorial> todosEditoriales(String codigoEditorial) {
-        EntityManager em = super.getEntityManager();
-        return em.createNamedQuery("Editorial.todosEditoriales")
-                .setParameter("prefijo", codigoEditorial)
-                .getResultList();
-    }
-*/
-}
-</file>
-
 <file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/backend/logic/BussinessLogicImp.java">
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -1409,66 +1262,6 @@ public class BussinessLogicImp implements BusinessLogicInterface {
 }
 </file>
 
-<file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/entities/Editorial.java">
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package co.edu.uvpalmira.fpoe.exfinal.entities;
-
-import co.edu.uvpalmira.fpoe.persistence.jpalib.AbstractEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-import jakarta.validation.constraints.NotEmpty;
-
-/**
- *
- * @author Univalle
- */
-@Entity
-@NamedQueries({
-    @NamedQuery(name = "e.buscarPorNit", query = "SELECT e FROM Editorial e WHERE e.nit= :nit"),
-    //@NamedQuery(name="e.buscarCompleto",query= "SELECT e FROM Editorial e WHERE e.nit LIKE :prefijo ORDER BY e.nit ASC")
-})
-public class Editorial extends AbstractEntity {
-    @NotEmpty
-    @Column(nullable = false, unique = true)
-    private long nit;
-    @NotEmpty
-    @Column(nullable = false)
-    private String nombre;
-
-    public Editorial(long nit, String nombre) {
-        this.nit = nit;
-        this.nombre = nombre;
-    }
-
-    public Editorial() {
-        this.nit = 0;
-        this.nombre = "";
-    }
-
-    public long getNit() {
-        return nit;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNit(long nit) {
-        this.nit = nit;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-}
-</file>
-
 <file path="src/main/resources/data.sql">
 INSERT INTO editorial (nit, nombre) VALUES (8903990106, 'Editorial Universidad del Valle');
 INSERT INTO editorial (nit, nombre) VALUES (8300022877, 'Panamericana Editorial');
@@ -1479,6 +1272,16 @@ INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Francisco
 
 INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Consuelo Lago', 'DISPONIBLE', 9786287542198, 'NIEVES 55 AÑOS', 3);
 INSERT INTO libro (autor, estado, isbn, titulo, editorial_id) VALUES ('Murray Cooper', 'DISPONIBLE', 9789588818368, 'COLIBRÍES EN COLOMBIA', 3);
+</file>
+
+<file path="src/main/webapp/WEB-INF/beans.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="https://jakarta.ee/xml/ns/jakartaee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/beans_4_0.xsd"
+       version="4.0" 
+       bean-discovery-mode="all">
+</beans>
 </file>
 
 <file path="src/test/java/co/edu/uvpalmira/fpoe/exfinal/backend/dao/EditorialDAOTest.java">
@@ -1559,6 +1362,105 @@ public class EditorialDAOTest {
     </properties>
   </persistence-unit>
 </persistence>
+</file>
+
+<file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/backend/dao/EditorialDAO.java">
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package co.edu.uvpalmira.fpoe.exfinal.backend.dao;
+
+import co.edu.uvpalmira.fpoe.exfinal.entities.Editorial;
+import co.edu.uvpalmira.fpoe.persistence.jpalib.AbstractDAO;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import java.util.List;
+
+/**
+ *
+ * @author ajvelez
+ */
+public class EditorialDAO extends AbstractDAO<Editorial> {
+
+    public EditorialDAO(EntityManagerFactory emf) {
+        super(Editorial.class, emf);
+    }
+
+    public Editorial buscarPorNit(long nit) {
+        EntityManager em = super.getEntityManager();
+        return (Editorial) em.createNamedQuery("Editorial.buscarPorNit").setParameter("nit", nit).getSingleResult();
+
+    }
+
+   /* public List<Editorial> todosEditoriales(String codigoEditorial) {
+        EntityManager em = super.getEntityManager();
+        return em.createNamedQuery("Editorial.todosEditoriales")
+                .setParameter("prefijo", codigoEditorial)
+                .getResultList();
+    }
+*/
+}
+</file>
+
+<file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/entities/Editorial.java">
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package co.edu.uvpalmira.fpoe.exfinal.entities;
+
+import co.edu.uvpalmira.fpoe.persistence.jpalib.AbstractEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.validation.constraints.NotEmpty;
+
+/**
+ *
+ * @author Univalle
+ */
+@Entity
+@NamedQueries({
+    @NamedQuery(name = "Editorial.buscarPorNit", query = "SELECT e FROM Editorial e WHERE e.nit= :nit"),
+    //@NamedQuery(name="e.buscarCompleto",query= "SELECT e FROM Editorial e WHERE e.nit LIKE :prefijo ORDER BY e.nit ASC")
+})
+public class Editorial extends AbstractEntity {
+    @NotEmpty
+    @Column(nullable = false, unique = true)
+    private long nit;
+    @NotEmpty
+    @Column(nullable = false)
+    private String nombre;
+
+    public Editorial(long nit, String nombre) {
+        this.nit = nit;
+        this.nombre = nombre;
+    }
+
+    public Editorial() {
+        this.nit = 0;
+        this.nombre = "";
+    }
+
+    public long getNit() {
+        return nit;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNit(long nit) {
+        this.nit = nit;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+}
 </file>
 
 <file path="src/main/java/co/edu/uvpalmira/fpoe/exfinal/frontend/controller/EditorialController.java">

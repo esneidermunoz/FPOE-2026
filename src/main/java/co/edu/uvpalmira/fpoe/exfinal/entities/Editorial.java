@@ -21,7 +21,6 @@ import jakarta.validation.constraints.NotEmpty;
     //@NamedQuery(name="e.buscarCompleto",query= "SELECT e FROM Editorial e WHERE e.nit LIKE :prefijo ORDER BY e.nit ASC")
 })
 public class Editorial extends AbstractEntity {
-    @NotEmpty
     @Column(nullable = false, unique = true)
     private long nit;
     @NotEmpty

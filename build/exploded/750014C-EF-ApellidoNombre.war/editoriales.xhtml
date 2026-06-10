@@ -12,42 +12,51 @@
 
         <f:loadBundle var="label" basename="labels" />
 
-        <h:form>
+        <h:form id="formEditoriales">
+            <p:growl id="msjs" showDetail="false" />
+
             <p:card title="#{label['xhtml.editoriales.label']}"> 
 
                 <h:panelGrid columns="3" >
                     <p:outputLabel value="#{label['editorial.nit.label']}" for="nit" /> 
                     <h:panelGrid columns="2">
-                        <p:inputNumber id="nit" decimalPlaces="0" emptyValue="" />
-                        <p:commandButton icon="pi pi-search"  />
+                        <p:inputNumber id="nit" value="#{edctrl.editorial.nit}" decimalPlaces="0" emptyValue="0" />
+                        <p:commandButton icon="pi pi-search" action="#{edctrl.getEditorial()}" update="@form" process="nit @this" />
                     </h:panelGrid>
                     <p:message for="nit" />
 
-                    <p:outputLabel value="#{label['editorial.nombre.label']}" for="@next" /> 
-                    <p:inputText id="nombre"  />
-                    <p:message for="@previous" />
+                    <p:outputLabel value="#{label['editorial.nombre.label']}" for="nombre" /> 
+                    <p:inputText id="nombre" value="#{edctrl.editorial.nombre}" required="true" requiredMessage="El nombre es obligatorio" />
+                    <p:message for="nombre" />
 
                 </h:panelGrid>
 
                 <f:facet name="footer"> 
                     <p:commandButton value="#{label['accion.guardar.label']}" 
-                                     icon="pi pi-save" />
-                    <p:spacer width="2" />
+                                     action="#{edctrl.guardar()}" 
+                                     icon="pi pi-save" 
+                                     update="@form tablaEditoriales" />
+                    <p:spacer width="5" />
                     <p:commandButton value="#{label['accion.borrar.label']}" 
-                                     icon="pi pi-times" />
+                                     action="#{edctrl.cancelar()}" 
+                                     icon="pi pi-times" 
+                                     update="@form"
+                                     process="@this" />
                 </f:facet>
-
-                <p:messages id="mensajes" globalOnly="true" />
             </p:card>
+
+            <p:spacer height="20" />
+
+            <p:dataTable id="tablaEditoriales" value="#{edctrl.editoriales}" var="publi" emptyMessage="No hay editoriales registradas">
+                <p:column headerText="#{label['editorial.nit.label']}">
+                    <h:outputText value="#{publi.nit}" />
+                </p:column>
+                <p:column headerText="#{label['editorial.nombre.label']}">
+                    <h:outputText value="#{publi.nombre}" />
+                </p:column>
+            </p:dataTable>
+            
         </h:form>
-
-
-        <p:dataTable >
-            <p:column headerText="#{label['editorial.nit.label']}">
-            </p:column>
-            <p:column headerText="#{label['editorial.nombre.label']}">
-            </p:column>
-        </p:dataTable>
 
     </h:body>
 </html>
